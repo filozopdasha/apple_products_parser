@@ -1,0 +1,11 @@
+
+ALPHABETIC = { ('a'..'z' | 'A'..'Z') }
+
+name = { (ALPHABETIC | ASCII_DIGIT | " " )+ }
+price = { ASCII_DIGIT+ ~ "." ~ ASCII_DIGIT{2} }
+date_of_release = { day ~ "-" ~ month ~ "-" ~ year }
+
+day = { ("0" ~ ('1'..'9')) | ("1" ~ ('0'..'9')) | ("2" ~ ('0'..'9')) | ("3" ~ ('0'..'1')) }
+month = { ("0" ~ ('1'..'9')) | ("1" ~ ('0'..'2')) }
+year = { ASCII_DIGIT{4} }
+
