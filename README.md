@@ -48,6 +48,7 @@ The parsed data can be used for analysis, generating reports, or displaying in u
 
 
 ### Example Output(toml)
+```toml
 [[]]
 name = "iPhone 15 Pro"
 price = 999.99

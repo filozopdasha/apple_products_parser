@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Apple Watch Series 8",
+        "price": 399.99,
+        "type": "Watch",
+        "screen_size": "41mm",
+        "storage": ["32GB"],
+        "color": ["Midnight", "Starlight", "Silver", "Gold"],
+        "date_of_release": "07-09-2022",
+        "availability": true
+    },
+    {
+        "name": "Apple Watch SE (2nd Generation)",
+        "price": 249.99,
+        "type": "Watch",
+        "screen_size": "40mm",
+        "storage": ["32GB"],
+        "color": ["Midnight", "Starlight", "Silver"],
+        "date_of_release": "07-09-2022",
+        "availability": true
+    },
+    {
+        "name": "AirPods Pro (2nd Generation)",
+        "price": 249.99,
+        "type": "Earphones",
+        "screen_size": "N/A",
+        "storage": [],
+        "color": ["White"],
+        "date_of_release": "23-09-2022",
+        "availability": true
+    },
+    {
+        "name": "AirPods Max",
+        "price": 549.99,
+        "type": "Earphones",
+        "screen_size": "N/A",
+        "storage": [],
+        "color": ["Silver", "Space Gray", "Sky Blue", "Pink"],
+        "date_of_release": "15-12-2020",
+        "availability": true
+    }
+]

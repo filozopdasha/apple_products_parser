@@ -30,6 +30,16 @@
         "availability": true
     },
     {
+        "name": "AirPods (3rd Generation)",
+        "price": 179.99,
+        "type": "Earphones",
+        "screen_size": "N/A",
+        "storage": [],
+        "color": ["White"],
+        "date_of_release": "26-10-2021",
+        "availability": true
+    },
+    {
         "name": "AirPods Max",
         "price": 549.99,
         "type": "Earphones",
