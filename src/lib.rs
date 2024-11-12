@@ -1,6 +1,6 @@
+use pest::error::Error as PestError;
 use pest_derive::Parser;
 use thiserror::Error;
-use pest::error::Error as PestError; 
 
 #[derive(Parser)]
 #[grammar = "./grammar.pest"]

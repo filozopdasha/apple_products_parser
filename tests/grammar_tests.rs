@@ -1,16 +1,14 @@
-use pest::Parser;
 use anyhow::anyhow;
 use apple_products_parser::*;
+use pest::Parser;
 use thiserror::Error;
 
-
 #[test]
-fn name_test() -> anyhow::Result< () >
-{
-///Тестуємо валідну назву
-    let pair = Grammar::parse(Rule::name, "MacBook Pro 14")?.next().ok_or_else(
-        ||anyhow!("no pair")
-    )?;
+fn name_test() -> anyhow::Result<()> {
+    ///Тестуємо валідну назву
+    let pair = Grammar::parse(Rule::name, "MacBook Pro 14")?
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "MacBook Pro 14");
     assert_eq!(pair.as_span().start(), 0);
@@ -27,14 +25,12 @@ fn name_test() -> anyhow::Result< () >
     Ok(())
 }
 
-
 #[test]
-fn price_test() -> anyhow::Result< () >
-{
+fn price_test() -> anyhow::Result<()> {
     ///Тестуємо правильний формат запису для правила price
     let pair = Grammar::parse(Rule::price, "1999.99")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "1999.99");
     assert_eq!(pair.as_span().start(), 0);
@@ -55,14 +51,12 @@ fn price_test() -> anyhow::Result< () >
     Ok(())
 }
 
-
 #[test]
-fn date_of_release_test() -> anyhow::Result< () >
-{
+fn date_of_release_test() -> anyhow::Result<()> {
     ///Тестуємо правильний формат запису для правила date_of_release
     let pair = Grammar::parse(Rule::date_of_release, "24-10-2023")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "24-10-2023");
     assert_eq!(pair.as_span().start(), 0);
@@ -72,22 +66,21 @@ fn date_of_release_test() -> anyhow::Result< () >
     let pair = Grammar::parse(Rule::date_of_release, "24-1o-2023i");
     assert!(pair.is_err());
 
-
     ///Тест на некоректний формат(не дотримано правила, що останнє число - 4 цифри)
     let pair = Grammar::parse(Rule::date_of_release, "24-10-20");
     assert!(pair.is_err());
 
     ///Тест на неправильний вхід(неправильний формат)
     let pair = Grammar::parse(Rule::date_of_release, "24-2023");
-    assert!(pair.is_err()); 
+    assert!(pair.is_err());
 
     ///Тест на неправильний вхід(неісеуючий день)
     let pair = Grammar::parse(Rule::date_of_release, "33-10-2023");
-    assert!(pair.is_err()); 
+    assert!(pair.is_err());
 
-     ///Тест на неправильний вхід(неісеуючий місяць)
-     let pair = Grammar::parse(Rule::date_of_release, "24-13-2023");
-     assert!(pair.is_err()); 
+    ///Тест на неправильний вхід(неісеуючий місяць)
+    let pair = Grammar::parse(Rule::date_of_release, "24-13-2023");
+    assert!(pair.is_err());
 
     ///Тест на порожній вхід
     let pair = Grammar::parse(Rule::date_of_release, "");
@@ -97,13 +90,16 @@ fn date_of_release_test() -> anyhow::Result< () >
 }
 
 #[test]
-fn type_test() -> anyhow::Result< () >
-{
+fn type_test() -> anyhow::Result<()> {
     /// Тестуємо правильні значення для правила type
-    let pair = Grammar::parse(Rule::device_type, "Smartphone")?.next().ok_or_else(||anyhow!("no pair"))?;
+    let pair = Grammar::parse(Rule::device_type, "Smartphone")?
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
     assert_eq!(pair.as_str(), "Smartphone");
 
-    let pair = Grammar::parse(Rule::device_type, "Laptop")?.next().ok_or_else(||anyhow!("no pair"))?;
+    let pair = Grammar::parse(Rule::device_type, "Laptop")?
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
     assert_eq!(pair.as_str(), "Laptop");
 
     /// Тест на некоректне значення
@@ -113,14 +109,12 @@ fn type_test() -> anyhow::Result< () >
     Ok(())
 }
 
-
 #[test]
-fn screen_size_test() -> anyhow::Result< () >
-{
+fn screen_size_test() -> anyhow::Result<()> {
     /// Тестуємо правильний формат для правила screen_size
     let pair = Grammar::parse(Rule::screen_size, "13.3 inches")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "13.3 inches");
 
@@ -136,18 +130,17 @@ fn screen_size_test() -> anyhow::Result< () >
 }
 
 #[test]
-fn storage_test() -> anyhow::Result< () >
-{
+fn storage_test() -> anyhow::Result<()> {
     /// Тестуємо правильний формат для правила storage
     let pair = Grammar::parse(Rule::storage, "512GB")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "512GB");
 
     let pair = Grammar::parse(Rule::storage, "1TB")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "1TB");
 
@@ -163,12 +156,11 @@ fn storage_test() -> anyhow::Result< () >
 }
 
 #[test]
-fn color_test() -> anyhow::Result< () >
-{
+fn color_test() -> anyhow::Result<()> {
     /// Тестуємо правильний формат для правила color
     let pair = Grammar::parse(Rule::color, "Pacific Blue")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "Pacific Blue");
 
@@ -184,13 +176,16 @@ fn color_test() -> anyhow::Result< () >
 }
 
 #[test]
-fn availability_test() -> anyhow::Result< () >
-{
+fn availability_test() -> anyhow::Result<()> {
     /// Тестуємо правильні значення для правила availability
-    let pair = Grammar::parse(Rule::availability, "true")?.next().ok_or_else(||anyhow!("no pair"))?;
+    let pair = Grammar::parse(Rule::availability, "true")?
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
     assert_eq!(pair.as_str(), "true");
 
-    let pair = Grammar::parse(Rule::availability, "false")?.next().ok_or_else(||anyhow!("no pair"))?;
+    let pair = Grammar::parse(Rule::availability, "false")?
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
     assert_eq!(pair.as_str(), "false");
 
     /// Тест на некоректне значення
@@ -201,18 +196,17 @@ fn availability_test() -> anyhow::Result< () >
 }
 
 #[test]
-fn ram_test() -> anyhow::Result< () >
-{
+fn ram_test() -> anyhow::Result<()> {
     /// Тестуємо правильний формат для правила ram
     let pair = Grammar::parse(Rule::ram, "16GB")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "16GB");
 
     let pair = Grammar::parse(Rule::ram, "1TB")?
-    .next()
-    .ok_or_else(||anyhow!("no pair"))?;
+        .next()
+        .ok_or_else(|| anyhow!("no pair"))?;
 
     assert_eq!(pair.as_str(), "1TB");
 

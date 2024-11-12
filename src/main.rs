@@ -1,7 +1,6 @@
-use std::{env, fs::File, io::Read};
 use serde::{Deserialize, Serialize};
-use serde_json;
 use serde_yaml::to_string as to_yaml;
+use std::{env, fs::File, io::Read};
 use toml::to_string as to_toml;
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -18,9 +17,9 @@ struct Product {
 }
 
 fn parse_file_to_yaml(filename: &str) {
-    let mut file = File::open(filename).unwrap(); 
+    let mut file = File::open(filename).unwrap();
     let mut json = String::new();
-    file.read_to_string(&mut json).unwrap(); 
+    file.read_to_string(&mut json).unwrap();
 
     let products: Vec<Product> = serde_json::from_str(&json).unwrap();
     let yaml = to_yaml(&products).unwrap();
@@ -28,11 +27,11 @@ fn parse_file_to_yaml(filename: &str) {
 }
 
 fn parse_file_to_toml(filename: &str) {
-    let mut file = File::open(filename).unwrap(); 
+    let mut file = File::open(filename).unwrap();
     let mut json = String::new();
-    file.read_to_string(&mut json).unwrap(); 
+    file.read_to_string(&mut json).unwrap();
 
-    let products: Vec<Product> = serde_json::from_str(&json).unwrap(); 
+    let products: Vec<Product> = serde_json::from_str(&json).unwrap();
     let toml = to_toml(&products).unwrap();
     println!("TOML: \n{}", toml);
 }
@@ -45,7 +44,6 @@ fn info() {
     println!(" cargo run help                      Display help information");
     println!(" cargo run credits                   Display credits");
     println!(" cargo test                          Print tests");
-
 }
 
 fn show_credits() {
@@ -73,7 +71,10 @@ fn main() {
                 "yaml" => parse_file_to_yaml(filename),
                 "toml" => parse_file_to_toml(filename),
                 _ => {
-                    eprintln!("Please, choose another format (only yaml or toml): {}", format);
+                    eprintln!(
+                        "Please, choose another format (only yaml or toml): {}",
+                        format
+                    );
                     info();
                 }
             }
