@@ -1,6 +1,5 @@
 run:
-	cargo run parse devices.json yaml
-	cargo run parse devices.json toml
+	cargo run 
 
 fmt:
 	cargo fmt
