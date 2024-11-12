@@ -1,5 +1,9 @@
 # Apple Products Parser
 
+## Links
+https://crates.io/crates/apple_products_parser
+https://docs.rs/apple_products_parser/0.1.0/apple_products_parser/
+
 ## Brief Description
 
 **Apple Product Parser** is a simple Rust tool that processes detailed information from JSON about Apple products such as iPhones, MacBooks, and iPads. It extracts key details like product name, price, category, screen size, storage options, available colors, and year of release, and organizes them in a structured format(prints in console as yaml and toml).
@@ -69,8 +73,10 @@ ram = "16GB"
 color = ["Silver", "Space Gray"]
 date_of_release = "24-10-2023"
 availability = true
+```
 
 ### Example Output(yaml)
+```
 - name: iPhone 15 Pro
   price: 999.99
   type: Smartphone
@@ -100,4 +106,4 @@ availability = true
     - Space Gray
   date_of_release: 24-10-2023
   availability: true
-
+```
