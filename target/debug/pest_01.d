@@ -1,1 +1,0 @@
-/Users/filozopdasha/Desktop/my_parser_project/target/debug/pest_01: /Users/filozopdasha/Desktop/my_parser_project/src/grammar.pest /Users/filozopdasha/Desktop/my_parser_project/src/lib.rs /Users/filozopdasha/Desktop/my_parser_project/src/main.rs
