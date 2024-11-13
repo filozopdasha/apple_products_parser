@@ -10,16 +10,46 @@ https://docs.rs/apple_products_parser/0.1.0/apple_products_parser/
 
 The parsed data can be used for analysis, generating reports, or displaying in user interfaces. This project focuses on ensuring the data is accurately processed and made available for further use.
 
-### Grammar for Input
-- **Name**: The product's name (e.g., MacBook Pro 14-inch)
-- **Price**: The price of the product in USD (e.g., 1999.99)
-- **Type**: The type of product (e.g., Laptop)
-- **Screen Size**: The display size (e.g., 14.2 inches)
-- **Storage**: A list of available storage options (e.g., ["512GB", "1TB", "2TB"])
-- **RAM**: The amount of RAM (e.g., 16GB)
-- **Color**: Available color options (e.g., ["Silver", "Space Gray"])
-- **Year of Release**: The year the product was released (e.g., 2023)
-- **Availability**: Whether the product is available (true/false)
+### Grammar Definition
+- **ALPHABETIC**: 
+{ ('a'..'z' | 'A'..'Z') }
+Any letter, uppercase or lowercase
+- **Name**:
+{ (ALPHABETIC | ASCII_DIGIT | " ")+ }
+The product name can consist of letters, digits, or spaces.
+- **Price**:
+{ ASCII_DIGIT+ ~ "." ~ ASCII_DIGIT{2} }
+The price should be digits, followed by a decimal point and two digits for cents.
+- **Date of Release**
+{ day ~ "-" ~ month ~ "-" ~ year }
+Should be in the format dd-mm-yyyy.
+- **Day** 
+{ ("0" ~ ('1'..'9')) | ("1" ~ ('0'..'9')) | ("2" ~ ('0'..'9')) | ("3" ~ ('0'..'1')) }
+A valid day between "01" and "31".
+- **Month**: 
+{ ("0" ~ ('1'..'9')) | ("1" ~ ('0'..'2')) }
+A valid month between "01" and "12".
+- **Year**:
+ { ASCII_DIGIT{4} }
+A four-digit number (e.g., 2022).
+- **Type**: 
+{ "Smartphone" | "Laptop" | "Tablet" | "Earphones" | "Watch" | "Other" }
+The product type can be one of the predefined options.
+- **Screen Size**:
+{ ASCII_DIGIT+ ~ "." ~ ASCII_DIGIT+ ~ " inches" | "N/A" }
+Screen size represented as digits followed by "inches" (e.g., "14.2 inches") or it can be "N/A".
+- **Storage**: 
+{ (ASCII_DIGIT+ ~ "GB") | (ASCII_DIGIT+ ~ "TB") }
+Storage capacity in GB or TB (e.g., "512GB" or "1TB").
+- **RAM**: 
+{ (ASCII_DIGIT+ ~ "GB") | (ASCII_DIGIT+ ~ "TB") }
+RAM size specified in GB or TB (e.g., "16GB" or "1TB").
+- **Color**: 
+{ (ALPHABETIC | " ")+ }
+Colors are represented by letters and spaces (e.g., "Silver" or "Space Gray").
+- **Availability**: 
+{ "true" | "false" }
+Availability is a boolean value, either "true" or "false".
 
 ## Usage of Parsed Results
 - Data Analysis: You can compare prices, storage sizes, screen sizes, and other features of different Apple products
