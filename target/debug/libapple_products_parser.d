@@ -1,1 +1,0 @@
-/Users/filozopdasha/Desktop/apple_products_parser/target/debug/libapple_products_parser.rlib: /Users/filozopdasha/Desktop/apple_products_parser/src/grammar.pest /Users/filozopdasha/Desktop/apple_products_parser/src/lib.rs
