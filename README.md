@@ -1,9 +1,9 @@
 # Apple Products Parser
 
 ## Links
-https://crates.io/crates/apple_products_parser
+Crate: https://crates.io/crates/apple_products_parser
 
-https://docs.rs/apple_products_parser/0.1.1/apple_products_parser/
+Docs: https://docs.rs/apple_products_parser/0.1.2/apple_products_parser/
 
 ## Brief Description
 
