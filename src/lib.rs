@@ -11,6 +11,7 @@ use thiserror::Error;
 pub struct Grammar;
 
 
+
 /// Custom error type for JSON parsing errors. This uses the `thiserror` crate for easy error definition.
 #[derive(Error, Debug)]
 #[error("Error while parsing JSON: \n{0}")]
