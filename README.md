@@ -3,7 +3,7 @@
 ## Links
 Crate: https://crates.io/crates/apple_products_parser
 
-Docs: https://docs.rs/apple_products_parser/0.1.2/apple_products_parser/
+Docs: https://docs.rs/apple_products_parser/0.1.3/apple_products_parser/
 
 ## Brief Description
 
